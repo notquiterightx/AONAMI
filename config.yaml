@@ -1,0 +1,451 @@
+meta:
+  engine: 4.1.0 #Min ergogen version for kiCAD 8 footprints
+units:
+  # Proxy Spacing Variables
+  kx: cx #choc spaced
+  ky: cy
+  # Padding Variables
+  px: kx + 1
+  py: ky + 2
+
+  # vertical offset of mcu area items
+  voff: 7
+
+  #fillet
+  f: 0
+
+  #rectangle units
+  w: 124
+  h: 72
+
+  # pinky splay angles
+  spang: 8
+  pinksprd: 0.5
+  base_rot: 0
+
+  standoff_size: 5 #size for standoff holes on pcb
+  screen_standoff_size: 2
+
+  hole1_x: -0.5 kx - 1
+  hole1_y: -0.5 ky + 0.5
+
+  hole2_x: -0.52 kx
+  hole2_y: -0.35 ky
+
+  hole3_x: 0.5 kx + 1
+  hole3_y: 0. ky - 0.5
+
+  hole4_x: 0.5 kx - 5
+  hole4_y: -0.5 ky - 2.1
+
+  hole5_x: -0.5 kx - 0.6
+  hole5_y: -0.6 ky + 1.5
+
+  wall_thickness: 1.8 # account for the thickness in 3D printed case/plate
+  print_fit_tolerance: 0.2 # give the case some overlap beyond pcb
+
+  # display correct choc sizing
+  $default_width: 18
+  $default_height: 17
+
+points:
+  zones:
+    matrix:
+      anchor.shift: [50, -100] # Fix KiCad placement
+      key:
+        padding: 1ky # is this extra spacing necessary or will 1 allow spacing for keycaps?
+        spread: 1kx
+      columns:
+        extra:
+          key.splay: spang # elimina column_net aquí: asignaremos net por fila abajo
+          rows:
+            top:
+              # esta tecla será eléctricamente parte de la columna pinky
+              row_net: row_thumb
+              column_net: col_pinky
+            home:
+              # esta tecla será eléctricamente parte de la columna ring
+              row_net: row_thumb
+              column_net: col_ring
+          rows.bottom.skip: true
+        pinky:
+          key:
+            stagger: 0.55ky
+            #splay: spang # comment this line out if using the 'extra' key above
+            column_net: col_pinky
+        ring:
+          key:
+            stagger: 0.5ky
+            splay: -spang/2
+            spread: 1kx + pinksprd # avoid collision on splayed col?
+            column_net: col_ring
+        middle:
+          key:
+            stagger: 0.35ky
+            splay: -spang/2
+            spread: 1kx + pinksprd # avoid collision on splayed col?
+            column_net: col_middle
+        index:
+          key:
+            stagger: -0.4ky
+            column_net: col_index
+        inner:
+          key:
+            stagger: -0.15ky
+            column_net: col_inner
+      rows:
+        bottom:
+          row_net: row_bottom
+        home:
+          row_net: row_home
+        top:
+          row_net: row_top
+      rotate: -base_rot
+
+    thumb:
+      key:
+        padding: 1ky
+        spread: 1kx
+      anchor:
+        ref: matrix_index_bottom
+        shift: [-0.1kx, -1.25ky] #inspired by TOTEM
+      columns:
+        near:
+          key:
+            name: thumb_near
+            column_net: col_middle
+        mid:
+          key:
+            splay: -15
+            origin: [-0.5kx, -0.5ky]
+            name: thumb_mid
+            column_net: col_index
+        far:
+          key:
+            splay: -15
+            origin: [-0.5kx, -0.5ky]
+            name: thumb_far
+            column_net: col_inner
+            # for 1.5 thumb key
+            width: 1.5kx
+            rotate: 0
+            
+      rows:
+        thumb-cluster:
+          row_net: row_thumb
+
+outlines:
+  switch_cutouts:
+    - what: rectangle
+      where: true
+      size: [13.9, 13.9]
+  sc:
+    - what: rectangle
+      where: true
+      size: [16, 16]
+  raw:
+    - what: rectangle
+      where: true
+      size: [px, py]
+      fillet: f
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-0.5,ky-0.5]
+  thumb_outline:
+    - what: polygon
+      operation: stack
+      # bound: true
+      points:
+        - ref: thumb_near
+          shift: [-0.5px, 0.65py]
+        - ref: thumb_near
+          shift: [0.5px, 0.65py]
+        - ref: thumb_mid
+          shift: [-0.5px, 0.65py]
+        - ref: thumb_mid
+          shift: [0.5px, 0.65py]
+
+        - ref: thumb_far
+          shift: [0.5px, 0.5py]
+        - ref: thumb_far
+          shift: [0.5px, 0.65py]
+        - ref: thumb_far
+          shift: [0.75px, -0.5py]
+        - ref: thumb_far
+          shift: [-0.75px, -0.5py]
+        - ref: thumb_far
+          shift: [-0.75px, 0.5py]
+        - ref: thumb_far
+          shift: [-0.75px, 0.5py]
+        - ref: thumb_far
+          shift: [-0.5px, 0.5py]
+
+        - ref: thumb_near
+          shift: [0.5px, -0.5py]
+        - ref: thumb_near
+          shift: [-0.5px, -0.5py]
+      fillet: f
+  # combine keys with thumb cluster
+  thumb_outline_s:
+    - what: polygon
+      operation: stack
+      bound: true
+      points:
+        - ref: thumb_near
+          shift: [-0.5px, 0.65py]
+        - ref: thumb_near
+          shift: [0.5px, 0.65py]
+        - ref: thumb_mid
+          shift: [-0.5px, 0.65py]
+        - ref: thumb_mid
+          shift: [0.5px, 0.65py]
+
+        - ref: thumb_far
+          shift: [-0.5px, 0.65py]
+        - ref: thumb_far
+          shift: [0.5px, 0.65py]
+        - ref: thumb_far
+          shift: [0.5px, -0.5py]
+
+        - ref: thumb_mid
+          shift: [0.5px, -0.5py]
+        - ref: thumb_mid
+          shift: [-0.5px, -0.5py]
+
+        - ref: thumb_near
+          shift: [-0.5px, -0.5py]
+      fillet: 0
+  # combine keys with thumb cluster
+  key_section: [raw, thumb_outline_s]
+  base_pre:
+    - what: rectangle
+      size: [w/2+2, h]
+      where:
+        - ref: matrix_middle_top
+          shift: [0.3kx-w/4+1, -h/2+0.2ky]
+          rotate: base_rot
+      fillet: f
+  base_pre2:
+    - what: rectangle
+      size: [w/2, h+2]
+      where:
+        - ref: matrix_middle_top
+          shift: [0.3kx+w/4, -h/2+0.3ky+1]
+          rotate: base_rot
+      fillet: f
+  cut:
+    - what: rectangle
+      size: [100, 200]
+      where:
+        - ref: matrix_middle_top
+          shift: [-6kx, 0-0.15ky]
+          rotate: 300
+  ring:
+    - what: rectangle
+      size: [px+5, py+2]
+      where:
+        - ref: matrix_ring_top
+          shift: [1.5, 0]
+          rotate: -spang/2
+      fillet: f
+  pinky:
+    - what: rectangle
+      size: [px+5.6, py+2]
+      where:
+        - ref: matrix_pinky_top
+          shift: [1.5, 0.2]
+          rotate: -spang
+      fillet: f
+
+  base:
+    - base_pre
+    - operation: subtract
+      name: cut
+    - operation: add
+      name: ring
+    - operation: add
+      name: pinky
+    - operation: add
+      name: base_pre2
+  mcu:
+    - what: rectangle
+      size: [17.5, 21]
+      where:
+          ref: matrix_middle_top
+          shift: [57,-3.8-0.15ky]
+          rotate: 0
+  encoder:
+    - what: circle
+      radius: 3.6
+      where:
+          ref: matrix_middle_top
+          shift: [57,-40-0.1ky]
+          rotate: 0
+  battery:
+    - what: rectangle
+      size: [32, 6.4]
+      where:
+        - ref: thumb_near
+          shift: [-px/2-32/2-3, -py/2+6.2+1.6-0.1ky]
+          rotate: 0
+  pcb_base: 
+    - key_section
+    - operation: add
+      name: base
+    - operation: subtract
+      name: battery
+      fillet: 1
+  back_plate:
+    - name: pcb_base
+      expand: 1
+      fillet: 0
+  pcb: 
+    - back_plate
+    - operation: add
+      name: battery
+  pre_combo: [keys, mcu, encoder]
+  combo: 
+    - name: pcb_base
+    - operation: subtract
+      name: pre_combo
+    - operation: add
+      name: sc
+    - operation: subtract
+      name: switch_cutouts
+
+pcbs:
+  aonami:
+    template: kicad8
+    outlines:
+      main:
+        outline: pcb_base
+    footprints:
+      choc_hotswap:
+        what: ceoloide/switch_choc_v1_v2
+        where: true
+        params:
+          hotswap: true
+          solder: false
+          include_stabilizer_pad: false
+          include_corner_marks: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+          reversible: true
+          include_keycap: true
+          include_traces_vias: false
+          hotswap_3dmodel_filename: '"C:/Users/aaran/OneDrive/Documents/0. Tony/Design/Split Keyboard/3D Models/PG1350-socket.STEP"'
+          hotswap_3dmodel_xyz_offset: [-5, -3.8, 0]
+          hotswap_3dmodel_xyz_rotation: [90, 0, 180]
+          switch_3dmodel_filename: '"C:/Users/aaran/OneDrive/Documents/0. Tony/Design/Split Keyboard/3D Models/sunset_tactile.step"'
+          switch_3dmodel_xyz_offset: [0, 0, -1,5]
+          switch_3dmodel_xyz_rotation: [0, 180, 0]
+          keycap_3dmodel_filename: '"C:/Users/aaran/OneDrive/Documents/0. Tony/Design/Split Keyboard/3D Models/Kailh LP Choc PC Keycap.step"'
+          keycap_3dmodel_xyz_offset: [0, 0, -3.5]
+          keycap_3dmodel_xyz_rotation: [0, 180, 0]
+
+      encoder:
+        what: ceoloide/rotary_encoder_ec11_ec12
+        where:
+          ref: matrix_inner_home
+          shift: [21.25,-0.35ky]
+          rotate: 90
+        params:
+          encoder_3dmodel_filename: '"C:/Users/aaran/OneDrive/Documents/0. Tony/Design/Split Keyboard/3D Models/EC11_15mm.STEP"'
+          S1: col_inner
+          S2: enc_abs
+          A: ENC_A
+          B: GND
+          C: ENC_B
+          reversible: true
+
+      diode:
+        what: ceoloide/diode_tht_sod123
+        where: true
+        params:
+          side: B
+          include_thru_hole_smd_pads: true
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+          include_tht: false
+          reversible: true
+        adjust:
+          shift: [0, -5]
+          rotate: 0
+
+      power_switch:
+        what: ceoloide/power_switch_smd_side
+        where:
+          ref: thumb_near
+          shift: [-53, -3.1-0.1ky]
+          rotate: 270
+        params:
+          switch_3dmodel_filename: '${KICAD6_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_SPDT_PCM12.step'
+          switch_3dmodel_xyz_offset: [-0.33, 0, 0]
+          switch_3dmodel_xyz_rotation: [0, 0, -90]
+          invert_behavior: true
+          from: BAT_C
+          to: BAT_POS
+          reversible: true
+
+      reset_button:
+        what: r_button
+        where:
+          ref: matrix_middle_top
+          shift: [64.5,-19.5-1.45ky]
+          rotate: 270
+      jst:
+        what: ceoloide/battery_connector_jst_ph_2
+        where:
+          ref: matrix_middle_bottom
+          shift: [0,-0.5ky-4]
+          rotate: -180
+        params:
+          side: B
+          BAT_N: GND
+          BAT_P: BAT_C
+      mcu:
+        what: xiao_car
+        where:
+          ref: matrix_middle_top
+          shift: [56.8,-1.8-0.1ky]
+          rotate: 0
+        params:
+          P0: "row_top"
+          P1: "col_inner"
+          P2: "col_index"
+          P3: "col_middle"
+          P4: "ENC_A"
+          P5: "ENC_B"
+          P6: "col_ring"
+          P7: "col_pinky"
+          P8: "row_thumb"
+          P9: "row_bottom"
+          P10: "row_home"
+
+
+      mounting:
+        what: ceoloide/mounting_hole_plated
+        where:
+          - ref: matrix_inner_bottom
+            shift: [13.6, -5.54]
+      screw2:
+        what: ceoloide/mounting_hole_plated
+        where:
+          - ref: matrix_inner_bottom
+            shift: [13.6, -5.54]
+      screw3:
+        what: ceoloide/mounting_hole_plated
+        where:
+          - ref: matrix_inner_bottom
+            shift: [29.05, -14.46]
+      screw4:
+        what: ceoloide/mounting_hole_plated
+        where:
+          - ref: thumb_near
+            shift: [-68.1, 0]
+      screw5:
+        what: ceoloide/mounting_hole_plated
+        where:
+         - ref: matrix_inner_top
+           shift: [0, py/2+1+1.8]
