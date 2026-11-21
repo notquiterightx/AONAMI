@@ -12,7 +12,7 @@ units:
   voff: 7
 
   #fillet
-  f: 0
+  f: 2
 
   #rectangle units
   w: 124
@@ -81,13 +81,13 @@ points:
             column_net: col_ring
         middle:
           key:
-            stagger: 0.35ky
+            stagger: 0.4ky
             splay: -spang/2
             spread: 1kx + pinksprd # avoid collision on splayed col?
             column_net: col_middle
         index:
           key:
-            stagger: -0.4ky
+            stagger: -0.45ky
             column_net: col_index
         inner:
           key:
@@ -108,7 +108,7 @@ points:
         spread: 1kx
       anchor:
         ref: matrix_index_bottom
-        shift: [-0.1kx, -1.25ky] #inspired by TOTEM
+        shift: [-0kx, -1.25ky] #inspired by TOTEM
       columns:
         near:
           key:
@@ -126,9 +126,6 @@ points:
             origin: [-0.5kx, -0.5ky]
             name: thumb_far
             column_net: col_inner
-            # for 1.5 thumb key
-            width: 1.5kx
-            rotate: 0
             
       rows:
         thumb-cluster:
@@ -139,55 +136,28 @@ outlines:
     - what: rectangle
       where: true
       size: [13.9, 13.9]
+    - what: rectangle
+      where: true
+      size: [3.5, 16]
   sc:
     - what: rectangle
       where: true
       size: [16, 16]
-  raw:
+
+  raw_key:
     - what: rectangle
-      where: true
       size: [px, py]
       fillet: f
+
+  raw:
+    - name: raw_key
+      where: /^matrix_.*/
+      
   keys:
     - what: rectangle
       where: true
       size: [kx-0.5,ky-0.5]
   thumb_outline:
-    - what: polygon
-      operation: stack
-      # bound: true
-      points:
-        - ref: thumb_near
-          shift: [-0.5px, 0.65py]
-        - ref: thumb_near
-          shift: [0.5px, 0.65py]
-        - ref: thumb_mid
-          shift: [-0.5px, 0.65py]
-        - ref: thumb_mid
-          shift: [0.5px, 0.65py]
-
-        - ref: thumb_far
-          shift: [0.5px, 0.5py]
-        - ref: thumb_far
-          shift: [0.5px, 0.65py]
-        - ref: thumb_far
-          shift: [0.75px, -0.5py]
-        - ref: thumb_far
-          shift: [-0.75px, -0.5py]
-        - ref: thumb_far
-          shift: [-0.75px, 0.5py]
-        - ref: thumb_far
-          shift: [-0.75px, 0.5py]
-        - ref: thumb_far
-          shift: [-0.5px, 0.5py]
-
-        - ref: thumb_near
-          shift: [0.5px, -0.5py]
-        - ref: thumb_near
-          shift: [-0.5px, -0.5py]
-      fillet: f
-  # combine keys with thumb cluster
-  thumb_outline_s:
     - what: polygon
       operation: stack
       bound: true
@@ -208,32 +178,60 @@ outlines:
         - ref: thumb_far
           shift: [0.5px, -0.5py]
 
-        - ref: thumb_mid
-          shift: [0.5px, -0.5py]
-        - ref: thumb_mid
-          shift: [-0.5px, -0.5py]
+        - ref: thumb_far
+          shift: [-0.47px, -0.5py]
+        - ref: thumb_near
+          shift: [0.47px, -0.5py]
 
         - ref: thumb_near
           shift: [-0.5px, -0.5py]
-      fillet: 0
+      fillet: f
   # combine keys with thumb cluster
-  key_section: [raw, thumb_outline_s]
+  key_section: 
+    - name: raw
+    - operation: add
+      name: thumb_outline
+      fillet: 0
   base_pre:
     - what: rectangle
-      size: [w/2+2, h]
+      size: [w/2+2+6, h-10]
       where:
         - ref: matrix_middle_top
-          shift: [0.3kx-w/4+1, -h/2+0.2ky]
+          shift: [0.3kx-w/4+2.1, -h/2+0.2ky-6]
           rotate: base_rot
       fillet: f
+
   base_pre2:
     - what: rectangle
-      size: [w/2, h+2]
+      size: [3*px, 3*py]
+      where:
+        - ref: matrix_inner_top
+          shift: [-px/2, -2*py/2]
+          rotate: base_rot
+      fillet: 0
+
+  mcu_screw:
+    - what: rectangle
+      size: [3, 5.4]
       where:
         - ref: matrix_middle_top
-          shift: [0.3kx+w/4, -h/2+0.3ky+1]
+          shift: [2.5kx+21.7, -17.7]
+          rotate: base_rot
+      fillet: 0
+
+  mcu_bar:
+    - what: rectangle
+      size: [21.8, h+2]
+      where:
+        - ref: matrix_middle_top
+          shift: [2.5kx+21.8/2+0.6, -h/2+0.3ky+1]
           rotate: base_rot
       fillet: f
+    - operation: subtract
+      name: mcu_screw
+      fillet: 0
+
+  
   cut:
     - what: rectangle
       size: [100, 200]
@@ -243,20 +241,28 @@ outlines:
           rotate: 300
   ring:
     - what: rectangle
-      size: [px+5, py+2]
+      size: [px, py]
       where:
         - ref: matrix_ring_top
-          shift: [1.5, 0]
-          rotate: -spang/2
-      fillet: f
+          shift: [3.5, 0]
+          rotate: 0
+      fillet: 0
   pinky:
     - what: rectangle
-      size: [px+5.6, py+2]
+      size: [px, py]
       where:
         - ref: matrix_pinky_top
-          shift: [1.5, 0.2]
-          rotate: -spang
-      fillet: f
+          shift: [3, 0]
+          rotate: 0
+      fillet: 0
+  index:
+    - what: rectangle
+      size: [px, py]
+      where:
+        - ref: matrix_index_top
+          shift: [-1, 0]
+          rotate: 0
+      fillet: 0
 
   base:
     - base_pre
@@ -267,44 +273,49 @@ outlines:
     - operation: add
       name: pinky
     - operation: add
+      name: index
+    - operation: add
       name: base_pre2
+    - operation: add
+      name: mcu_bar
+      fillet: 0.2
+
   mcu:
     - what: rectangle
       size: [17.5, 21]
       where:
           ref: matrix_middle_top
-          shift: [57,-3.8-0.15ky]
+          shift: [56.8,-1.8-0.1ky]
           rotate: 0
   encoder:
     - what: circle
       radius: 3.6
       where:
           ref: matrix_middle_top
-          shift: [57,-40-0.1ky]
+          shift: [2.5kx+(21.8+0.6+3)/2,-40-0.1ky]
           rotate: 0
-  battery:
+  battery_raw:
     - what: rectangle
-      size: [32, 6.4]
+      size: [37, 12.6]
       where:
         - ref: thumb_near
-          shift: [-px/2-32/2-3, -py/2+6.2+1.6-0.1ky]
+          shift: [-px/2-37/2-2.5, -py/2+2.8]
           rotate: 0
+      fillet: 0.2
+
+  battery:
+    - name: base
+    - operation: subtract
+      name: battery_raw
+      fillet: f
+
   pcb_base: 
     - key_section
     - operation: add
-      name: base
-    - operation: subtract
       name: battery
-      fillet: 1
-  back_plate:
-    - name: pcb_base
-      expand: 1
-      fillet: 0
-  pcb: 
-    - back_plate
-    - operation: add
-      name: battery
+
   pre_combo: [keys, mcu, encoder]
+  
   combo: 
     - name: pcb_base
     - operation: subtract
@@ -348,7 +359,7 @@ pcbs:
         what: ceoloide/rotary_encoder_ec11_ec12
         where:
           ref: matrix_inner_home
-          shift: [21.25,-0.35ky]
+          shift: [21.85,-7.5]
           rotate: 90
         params:
           encoder_3dmodel_filename: '"C:/Users/aaran/OneDrive/Documents/0. Tony/Design/Split Keyboard/3D Models/EC11_15mm.STEP"'
@@ -377,7 +388,7 @@ pcbs:
         what: ceoloide/power_switch_smd_side
         where:
           ref: thumb_near
-          shift: [-53, -3.1-0.1ky]
+          shift: [-54.8, -3.5-0.1ky]
           rotate: 270
         params:
           switch_3dmodel_filename: '${KICAD6_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_SPDT_PCM12.step'
@@ -392,7 +403,7 @@ pcbs:
         what: r_button
         where:
           ref: matrix_middle_top
-          shift: [64.5,-19.5-1.45ky]
+          shift: [63.65,-19.5-1.5ky-3.5]
           rotate: 270
       jst:
         what: ceoloide/battery_connector_jst_ph_2
@@ -424,28 +435,43 @@ pcbs:
           P10: "row_home"
 
 
-      mounting:
+      screw1:
         what: ceoloide/mounting_hole_plated
         where:
-          - ref: matrix_inner_bottom
-            shift: [13.6, -5.54]
+          - ref: matrix_inner_top
+            shift: [-9.3, -6.03]
+        params:
+          outline: 0.6
       screw2:
         what: ceoloide/mounting_hole_plated
         where:
           - ref: matrix_inner_bottom
-            shift: [13.6, -5.54]
+            shift: [14.6, -5.37]
+        params:
+          outline: 0.6
       screw3:
         what: ceoloide/mounting_hole_plated
         where:
           - ref: matrix_inner_bottom
-            shift: [29.05, -14.46]
+            shift: [29.10, -13.74]
+        params:
+          outline: 0.6
       screw4:
         what: ceoloide/mounting_hole_plated
         where:
           - ref: thumb_near
-            shift: [-68.1, 0]
+            shift: [-70.8, -1]
+        params:
+          outline: 0.6
       screw5:
         what: ceoloide/mounting_hole_plated
         where:
-         - ref: matrix_inner_top
-           shift: [0, py/2+1+1.8]
+         - ref: matrix_ring_top
+           shift: [-10.1, -9.32]
+        params:
+          outline: 0.6
+      #screw6:
+      #  what: ceoloide/mounting_hole_plated
+      #  where:
+      #   - ref: matrix_middle_bottom
+      #     shift: [0, -25]
