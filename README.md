@@ -7,3 +7,14 @@
 <h1 align="left">AŌNAMI</h1>
 
 A wireless ergonomic split keyboard featuring 40 keys and 2 encoders designed around the Seeed Studio XIAO nRF52840
+
+## Features
+
+- Fully open sourced hardware & firmware
+- Two possible formats
+    - Low Profile with a 200mAh battery
+    - Tentable with a 600mAh battery
+- Choc v1/v2 hot swappable switches
+- Choc spacing
+- ZMK firmware for remapping keys
+- Fully wireless or wired through USB-C
