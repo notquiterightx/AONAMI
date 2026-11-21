@@ -6,7 +6,7 @@
 
 <h1 align="left">AŌNAMI</h1>
 
-A wireless ergonomic split keyboard featuring 40 keys and 2 encoders designed around the Seeed Studio XIAO nRF52840
+A wireless ergonomic split keyboard featuring 40 keys and 2 encoders. Designed around the Seeed Studio XIAO nRF52840
 
 ## Features
 
@@ -20,15 +20,42 @@ A wireless ergonomic split keyboard featuring 40 keys and 2 encoders designed ar
 - ZMK firmware for remapping keys
 - Fully wireless or wired through USB-C
 
+## PCB
+
+![Aōnami PCB](docs/images/IMG_8859.jpeg)
+The Ergogen and Gerbers files for the PCB are available [here](/pcbs/)
+
+## Case
+
+### Tenting
+![Aōnami PCB](docs/images/Aōnami_Backplate_Pre-Render.png)
+The Maker World case project can be found here [Insert Maker World link]. Alternatively, you can access the STEP or 3MF files [here](/case/).
+
+### Low Profile
+[The case for the low-profile format is still a WIP]
+
 ## Gallery
 ### Tenting Build
 
-![TOTEM black resin](docs/images/IMG_8815.jpeg)\
-![TOTEM black resin](docs/images/IMG_8818.jpeg)\
-![TOTEM black resin](docs/images/IMG_8817.jpeg)\
-![TOTEM black resin](docs/images/IMG_8854.jpeg)\
-![TOTEM black resin](docs/images/IMG_8856.jpeg)
+![Aōnami Tenting Build](docs/images/IMG_8815.jpeg)\
+![Aōnami Tenting Build](docs/images/IMG_8818.jpeg)\
+![Aōnami Tenting Build](docs/images/IMG_8817.jpeg)\
+![Aōnami Tenting Build](docs/images/IMG_8854.jpeg)\
+![Aōnami Tenting Build](docs/images/IMG_8856.jpeg)
 
 
 ### Low Profile Build
 [The low profile build is still ongoing]
+
+***
+
+## Inspiration
+The design of this keyboard wouldn't have been possible without many open-source projects that I've learned a lot from. Here are some of the ones that made the most impact:
+- [TOTEM by GEIST](https://github.com/GEIGEIGEIST/TOTEM) (and all of his keyboards for that matter)
+- [Pica40 by zzeneg](https://github.com/zzeneg/pica40)
+- [Flake by Lever Tech](https://github.com/lever-tech/flake)
+
+***
+If you end up building this keyboard, don't hesitate to reach out to me and give me any feedback or pictures you may have. This project has taken some time and I'd love to see if you end up using it.
+
+If you want to support this project or any other ones I may make in the future, you can leave me a tip [here](https://ko-fi.com/notquiteright), but this is still by all means an open source project and you shouln't feel any pressure to do so.
