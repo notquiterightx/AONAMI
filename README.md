@@ -50,7 +50,7 @@ The Maker World case project can be found here [Insert Maker World link]. Altern
 ***
 
 ## Inspiration
-The design of this keyboard wouldn't have been possible without many open-source projects that I've learned a lot from. Here are some of the ones that made the most impact:
+The design of this keyboard wouldn't have been possible without many open source projects that I've learned a lot from. Here are some of the ones that made the most impact:
 - [TOTEM by GEIST](https://github.com/GEIGEIGEIST/TOTEM) (and all of his keyboards for that matter)
 - [Pica40 by zzeneg](https://github.com/zzeneg/pica40)
 - [Flake by Lever Tech](https://github.com/lever-tech/flake)
