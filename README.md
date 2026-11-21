@@ -23,7 +23,7 @@ A wireless ergonomic split keyboard featuring 40 keys and 2 encoders. Designed a
 ## PCB
 
 ![Aōnami PCB](docs/images/IMG_8859.jpeg)
-The Ergogen and Gerbers files for the PCB are available [here](/pcbs/)
+You can check the source Ergogen files used to design this keyboard [here](/ergogen/). If you want the ready-to-order gerber files you can check them out [here](/pcbs/).
 
 ## Case
 
