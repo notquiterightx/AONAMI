@@ -19,3 +19,14 @@ A wireless ergonomic split keyboard featuring 40 keys and 2 encoders designed ar
 - Choc spacing
 - ZMK firmware for remapping keys
 - Fully wireless or wired through USB-C
+
+## Gallery
+### Tenting Build
+
+![TOTEM black resin](docs/images/IMG_8815.jpeg)\
+![TOTEM black resin](docs/images/IMG_8818.jpeg)\
+![TOTEM black resin](docs/images/IMG_8856.jpeg)\
+![TOTEM black resin](docs/images/IMG_8854.jpeg)
+
+### Low Profile Build
+[The low profile build is still ongoing]
