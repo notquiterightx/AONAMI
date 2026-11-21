@@ -11,6 +11,7 @@ A wireless ergonomic split keyboard featuring 40 keys and 2 encoders designed ar
 ## Features
 
 - Fully open sourced hardware & firmware
+- Reversible PCB
 - Two possible formats
     - Low Profile with a 200mAh battery
     - Tentable with a 600mAh battery
