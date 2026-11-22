@@ -25,6 +25,11 @@ A wireless ergonomic split keyboard featuring 40 keys and 2 encoders. Designed a
 ![Aōnami PCB](docs/images/IMG_8859.jpeg)
 You can check the source Ergogen files used to design this keyboard [here](/ergogen/). If you want the ready-to-order gerber files you can check them out [here](/pcbs/).
 
+## Firmware
+
+- [ZMK Precompiled](/firmware/). This is still a work in progress, there are a lot of tailor-made combos for myself and some extra layers that may not be as useful to you. If you want to adjust it to your needs check out the ZMK Source.
+- [ZMK Source](https://github.com/notquiterightx/zmk-config-aonami)
+
 ## Case
 
 ### Tenting
