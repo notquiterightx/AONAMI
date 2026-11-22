@@ -63,4 +63,4 @@ The design of this keyboard wouldn't have been possible without many open source
 ***
 If you end up building this keyboard, don't hesitate to reach out to me and give me any feedback or pictures you may have. This project has taken some time and I'd love to see if you end up using it.
 
-If you want to support this project or any other ones I may make in the future, you can leave me a tip [here](https://ko-fi.com/notquiteright), but this is still by all means an open source project and you shouln't feel any pressure to do so.
+If you want to support this project or any other ones I may make in the future, you can [leave me a tip](https://ko-fi.com/notquiteright), but this is still by all means an open source project and you shouln't feel any pressure to do so.
