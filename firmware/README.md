@@ -1,3 +1,11 @@
+## How to use
+- Download and unzip the `firmware.zip` file that contains the firmware
+- Connect the left half of the keyboard to your PC and press reset twice to enter bootloader mode
+- The keyboard should now appear as a mass storage device
+- Drag'n'drop the `aonami_left rgbled_adapter-seeeduino_xiao_ble-zmk.uf2` file from the archive onto the storage device
+- Repeat this process with the right half and the `aonami_right rgbled_adapter-seeeduino_xiao_ble-zmk.uf2` file.
+- Everything should be ready now and the keyboard should be discoverable via bluetooth
+
 ## Keymap
 This keymap is still a work in progress and is the one I'm using currently. Take into account I write both in Spanish and English so take every symbol and keycode with a grain of salt.
 
