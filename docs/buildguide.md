@@ -3,7 +3,7 @@
 <picture align="center">
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/IMG_8813.jpeg">
   <source media="(prefers-color-scheme: light)" srcset="docs/images/IMG_8813.jpeg">
-  <img alt="Aōnami Hero" src="images/IMG_8813.jpeg">
+  <img alt="Aōnami Hero" src="/images/IMG_8813.jpeg">
 </picture>
 
 ### Tools
