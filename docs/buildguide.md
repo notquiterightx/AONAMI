@@ -17,9 +17,9 @@ You will need the PCB files for the keyboard. They can be found [here](/pcbs/)
 
 This is the BOM for the Tenting build, the Low Profile build is still a WIP.
 
+### Soldering components
 | Component                              | Quantity | Notes                                                                       |
 |----------------------------------------|:--------:|-----------------------------------------------------------------------------|
-| **Soldering Components**               |          |                                                                             |
 | AŌNAMI PCB                             |     2    | One for each half                                                           |
 | Seeed Xiao nRF52840                    |     2    | The microcontroller                                                         |
 | JST 1.25 SMD 2pin Horizontal Connector |     2    | For the batteries                                                           |
@@ -31,7 +31,10 @@ This is the BOM for the Tenting build, the Low Profile build is still a WIP.
 | Female Round Headers 2.54mm            |    28    | Buy them in a pack, hotswap sockets for MCU                                 |
 | Alps SKHLLCA010                        |     2    | Reset buttons                                                               |
 | MSK12C02                               |     2    | Power switches                                                              |
-| **Assembly Components**                |          |                                                                             |
+
+### Assembly components
+| Component                              | Quantity | Notes                                                                       |
+|----------------------------------------|:--------:|-----------------------------------------------------------------------------|
 | Soldered PCB                           |     2    |                                                                             |
 | Switches (Choc v1/v2)                  |    40    | 1 per socket                                                                |
 | Keycaps                                |    40    | Must be compatible with your switches                                       |
