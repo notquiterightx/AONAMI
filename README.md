@@ -20,6 +20,9 @@ A wireless ergonomic split keyboard featuring 40 keys and 2 encoders. Designed a
 - ZMK firmware for remapping keys
 - Fully wireless or wired through USB-C
 
+## Build Guide
+The build guide is still a WIP but you can access the BOM here: [Build guide](docs/buildguide.md)
+
 ## PCB
 
 ![Aōnami PCB](docs/images/IMG_8859.jpeg)
@@ -34,7 +37,7 @@ You can check the source Ergogen files used to design this keyboard [here](/ergo
 
 ### Tenting
 ![Aōnami PCB](docs/images/Aōnami_Backplate_Pre-Render.png)
-The Maker World case project can be found [here](https://makerworld.com/en/models/3670155-aonami-keyboard-tenting-case#profileId-4213444). Alternatively, you can access the STEP or 3MF files [here](/case/).
+The Maker World case project can be found [here](https://makerworld.com/en/models/3670155-aonami-keyboard-tenting-case#profileId-4213444). Alternatively, you can access the STEP or 3MF files [here](/case/tenting/).
 
 ### Low Profile
 [The case for the low-profile format is still a WIP]
@@ -59,6 +62,7 @@ The design of this keyboard wouldn't have been possible without many open source
 - [TOTEM by GEIST](https://github.com/GEIGEIGEIST/TOTEM) (and all of his keyboards for that matter)
 - [Pica40 by zzeneg](https://github.com/zzeneg/pica40)
 - [Flake by Lever Tech](https://github.com/lever-tech/flake)
+- [Cornix LP by JezailFunder](https://jezailfunder.com/products/cornix-lp-keyboard)
 
 ***
 If you end up building this keyboard, don't hesitate to reach out to me and give me any feedback or pictures you may have. This project has taken some time and I'd love to see if you end up using it.
