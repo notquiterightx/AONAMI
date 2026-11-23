@@ -34,7 +34,7 @@ You can check the source Ergogen files used to design this keyboard [here](/ergo
 
 ### Tenting
 ![Aōnami PCB](docs/images/Aōnami_Backplate_Pre-Render.png)
-The Maker World case project can be found here [Insert Maker World link]. Alternatively, you can access the STEP or 3MF files [here](/case/).
+The Maker World case project can be found [here](https://makerworld.com/en/models/3670155-aonami-keyboard-tenting-case#profileId-4213444). Alternatively, you can access the STEP or 3MF files [here](/case/).
 
 ### Low Profile
 [The case for the low-profile format is still a WIP]
